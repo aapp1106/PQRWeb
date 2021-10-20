@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { PqrsService } from 'src/app/core/services/pqrs.service';
 
 @Component({
   selector: 'app-pqr-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PqrListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pqrService : PqrsService) { }
 
+  pqrsList:any;
+  pqrsListObservable!: Subscription;
+ 
   ngOnInit(): void {
+    this.pqrsListObservable = this.pqrService.getAllPQR().subscribe((data)=>{
+      this.pqrsList = data;
+      console.log("list ",this.pqrsList);
+      
+    })
+  }
+
+  ngOnDestroy(){
+    this.pqrsListObservable.unsubscribe();
   }
 
 }

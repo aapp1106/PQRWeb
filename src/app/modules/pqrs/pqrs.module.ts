@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PqrsRoutingModule } from './pqrs-routing.module';
 import { PqrsComponent } from './pqrs.component';
 import { FormularioComponent } from './componets/formulario/formulario.component';
+import { MaterialModule } from 'src/app/shared/modules/material.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormularioComponent } from './componets/formulario/formulario.component
   ],
   imports: [
     CommonModule,
-    PqrsRoutingModule
+    PqrsRoutingModule,
+    //MaterialModule
   ]
 })
 export class PqrsModule { }
